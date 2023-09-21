@@ -1,8 +1,7 @@
 import express from 'express';
+import authCheck from '../middlewares/authCheck';
 import { Op } from "sequelize";
 import {Album, User} from "../../db/models"
-
-
 
 const router = express.Router();
 
@@ -10,11 +9,11 @@ router.get('/', (req, res) => {
   const initState = { };
   res.render('Layout', initState);
 });
-router.get('/signup', (req, res) => {
+router.get('/signup', authCheck(false), (req, res) => {
    const initState = {};
    res.render('Layout', initState);
  });
- router.get('/login', (req, res) => {
+ router.get('/login', authCheck(false), (req, res) => {
    const initState = {};
    res.render('Layout', initState);
  });

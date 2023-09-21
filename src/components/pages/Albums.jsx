@@ -1,21 +1,24 @@
-import React from 'react'
-import {Card, Button} from 'react-bootstrap'
+import React, { useState } from 'react';
+import axios from 'axios';
+import AlbumsForm from '../ui/AlbumsForm'
+import Album from '../ui/Album'
 
-export default function Albums(allAlbums) {
 
+function Albums({allAlbums,user}) {
+    const[currentAlbums, setCurrentAlbums] = useState(allAlbums || [])
 
+    const deleteAlbumHandler = (id) => {
+      axios.delete(`/api/delete/${id}`).then(()=> setCurrentAlbums((prev) => prev.filter((album) => album.id !== id))).catch(err=>console.log(err))
+    }
+  
   return (
-    <Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src="holder.js/100px180" />
-    <Card.Body>
-      <Card.Title>Card Title</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the
-        bulk of the card's content.
-      </Card.Text>
-      <Button variant="primary">Go somewhere</Button>
-    </Card.Body>
-  </Card>
-
+    <div className='albums'>
+        <AlbumsForm setCurrentAlbums={setCurrentAlbums}/>
+        <div className='albums__cards'>
+            {currentAlbums?.map((album) => <Album key={album.id} user={user} album={album} deleteAlbumHandler={deleteAlbumHandler}/>)}
+        </div>
+    </div>
   )
 }
+
+export default Albums

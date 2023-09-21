@@ -15,7 +15,7 @@ export default function SignUpPage() {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.repeat) {
-      alert('Passwords don\'t match');
+      alert('Passwords do not match');
       return;
     }
     const response = await axios.post('/api/auth/signup', formData);

@@ -26,7 +26,7 @@ export default function Layout({ initState }) {
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
           crossOrigin="anonymous"
         />
-        {/* <link rel="stylesheet" href="" /> */}
+        <link rel="stylesheet" href="/css/style.css" />
         <script>var Alert = ReactBootstrap.Alert;</script>
         <script
           type="text/javascript"

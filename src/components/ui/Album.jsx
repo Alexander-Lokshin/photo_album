@@ -23,10 +23,9 @@ export default function Album({ user, album, deleteAlbumHandler, key }) {
       setCurrentTitle(formData.title);
     });
   };
-
   const clickForm = async () => {
-    await axios.get(`/albums/${key}`);
-    window.location = `/albums/${key}`;
+    await axios.get(`/albums/${album.id}`);
+    window.location = `/albums/${album.id}`;
   };
 
   return (

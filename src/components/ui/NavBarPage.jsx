@@ -14,7 +14,7 @@ export default function NavBarPage({ user }) {
   return (
     <Navbar bg="dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="#home">Hello, {user.username}</Navbar.Brand>
+        <Navbar.Brand href="#home">Hello, {user?.username}</Navbar.Brand>
         <Nav className="flex-grow-0">
           <Nav.Link href="#" onClick={logoutHandler} className="Logout">
             Logout

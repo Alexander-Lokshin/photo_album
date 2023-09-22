@@ -1,4 +1,34 @@
+.body {
+  margin: 0;
+}
 .container {
-   max-width: 1200px;
-   margin: 0px auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.primary {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.Navbar {
+  display: flex;
+}
+
+.container {
+  /* margin: 0; */
+}
+
+.albums__cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.navbar-brand {
+  margin-left: 25px;
+}
+.Logout  {
+   margin-right: 25px;
 }

@@ -1,6 +1,6 @@
 import express from 'express';
 import { Op } from 'sequelize';
-import authCheck from '../middlewares/authCheck';
+import stop from '../middlewares/authCheck';
 import { Album, User, Photo } from '../../db/models';
 
 const router = express.Router();
@@ -9,16 +9,16 @@ router.get('/', (req, res) => {
   const initState = {};
   res.render('Layout', initState);
 });
-router.get('/signup', authCheck(false), (req, res) => {
+router.get('/signup', (req, res) => {
   const initState = {};
   res.render('Layout', initState);
 });
-router.get('/login', authCheck(false), (req, res) => {
+router.get('/login', (req, res) => {
   const initState = {};
   res.render('Layout', initState);
 });
 
-router.get('/albums', async (req, res) => {
+router.get('/albums', stop, async (req, res) => {
   const allUserAlbums = await Album.findAll({
     where: { userId: req.session?.user?.id },
     include: User,
@@ -34,7 +34,7 @@ router.get('/albums', async (req, res) => {
   res.render('Layout', initState);
 });
 
-router.get('/albums/:albumId', async (req, res) => {
+router.get('/albums/:albumId', stop, async (req, res) => {
   const allUserPhotos = await Photo.findAll({
     where: { albumId: req.params.albumId },
     include: Album,

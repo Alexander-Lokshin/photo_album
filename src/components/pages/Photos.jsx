@@ -4,20 +4,18 @@ import Photoform from '../ui/PhotoForm';
 import Photoitem from '../ui/Photoitem';
 
 import usePost from '../../customHooks/usePost';
-import NavBarPage from '../ui/NavBarPage';
 
 export default function PhotoPage({ allUserPhotos, user }) {
-  const { postSubmitHandler, allPhotos,  handleError, deletePostHandler } = usePost(allUserPhotos);
+  const { postSubmitHandler, allPhotos, handleError, deletePostHandler } = usePost(allUserPhotos);
 
   return (
     <>
-      <NavBarPage />
       <Photoform postSubmitHandler={postSubmitHandler} />
       <Row className="mt-4">
         {allPhotos.map((photo) => (
           <Photoitem
             photo={photo}
-            user = {user}
+            user={user}
             handleError={handleError}
             deletePostHandler={deletePostHandler}
           />

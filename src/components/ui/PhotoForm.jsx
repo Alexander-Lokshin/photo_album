@@ -1,10 +1,12 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useParams } from 'react-router-dom';
 
 export default function PostForm({ postSubmitHandler }) {
+  const { albumId } = useParams();
   return (
-    <Form onSubmit={postSubmitHandler} className="mt-1">
+    <Form onSubmit={(e) => postSubmitHandler(e, albumId)} className="mt-1">
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Description</Form.Label>
         <Form.Control type="text" name="description" placeholder="description" autoComplete="off" />

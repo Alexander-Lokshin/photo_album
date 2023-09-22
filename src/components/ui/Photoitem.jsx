@@ -4,13 +4,9 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { useParams } from 'react-router-dom';
 
-export default function PostItem({
-  photo, handleError, deletePostHandler, user
-}) {
+export default function PostItem({ photo, handleError, deletePostHandler, user }) {
   const { albumId } = useParams();
-  console.log('from params: ', albumId);
-
- 
+  console.log('from params: ', photo);
 
   return (
     <Col xs={12} md={6} lg={4} className="mb-4">
@@ -18,7 +14,7 @@ export default function PostItem({
         <Card.Img
           style={{ height: '300px', objectFit: 'cover' }}
           variant="top"
-          src={`/img/${photo.fullname}`}
+          src={`/img/${photo.fullName}`}
           onError={handleError}
         />
         <Card.Body>
@@ -27,11 +23,7 @@ export default function PostItem({
       </Card>
       <Col className="d-flex justify-content-between align-items-end">
         {photo.Album.userId === user?.id && (
-          <Button
-            variant="danger"
-            onClick={() => deletePostHandler(photo.id)}
-            className="mt-2"
-          >
+          <Button variant="danger" onClick={() => deletePostHandler(photo.id)} className="mt-2">
             Delete
           </Button>
         )}

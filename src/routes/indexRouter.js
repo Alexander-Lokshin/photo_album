@@ -35,6 +35,7 @@ router.get('/albums', stop, async (req, res) => {
 });
 
 router.get('/albums/:albumId', stop, async (req, res) => {
+  console.log(req.params.albumId)
   const allUserPhotos = await Photo.findAll({
     where: { albumId: req.params.albumId },
     include: Album,

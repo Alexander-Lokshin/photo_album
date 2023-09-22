@@ -9,6 +9,7 @@ import { checkAuthor } from '../middlewares/authMiddleware';
 const apiPhotoRouter = express.Router();
 
 apiPhotoRouter.post('/', upload.single('file'), async (req, res) => {
+  console.log('12121212');
   try {
     // проверяем наличие файла
     if (!req.file) {
@@ -24,7 +25,8 @@ apiPhotoRouter.post('/', upload.single('file'), async (req, res) => {
     // создаем пост в бд
     const photo = await Photo.create({
       description: req.body.description,
-      img: name,
+      fullName: name,
+      miniName: name,
       albumId: req.body.albumId,
     });
     const postWithUser = await Photo.findByPk(photo.id, { include: Album });
